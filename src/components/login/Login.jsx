@@ -63,6 +63,13 @@ function Login() {
 
         <button className="submit-button" type="submit">Log In</button>
       </form>
+
+      <p className="form-bottom">
+        <a href="#">Forgot password?</a>
+      </p>
+      <p className="form-bottom">
+        Don't have an account? <a href="#">Register</a>
+      </p>
     </div>
   );
 }
