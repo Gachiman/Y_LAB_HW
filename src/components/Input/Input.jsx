@@ -1,4 +1,7 @@
-function Input({ label, placeholder, type, value, onChange, name, id,
+import './Input.css';
+
+
+function Input({ label, placeholder, type, value, onChange, name,
                  error, errorReset }) {
 
   const handleChange = (value) => {
@@ -7,22 +10,23 @@ function Input({ label, placeholder, type, value, onChange, name, id,
   }
 
   return(
-    <div>
-      <label htmlFor={id}>
+    <div className="form-input-container">
+      <label className="input-label" htmlFor={name}>
         {label}
       </label>
 
       <input
+        className={`form-input ${error ? "form-input-error" : ""}`}
         placeholder={placeholder}
         value={value} 
         onChange={(e) => handleChange(e.target.value)}
         type={type} 
         name={name} 
-        id={id} 
+        id={name} 
       />
 
       {error && (
-        <div>
+        <div className="input-error">
           {error}
         </div>
       )}

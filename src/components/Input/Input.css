@@ -1,0 +1,31 @@
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 100px;
+  width: 230px;
+}
+
+.input-label {
+  display: flex;
+  color: white;
+}
+
+.form-input {
+  color: black;
+  border-radius: 20px;
+  height: 30px;
+  padding-left: 15px;
+}
+
+.form-input:hover {
+  border-color: rgb(60, 243, 136);
+}
+
+.form-input-error {
+  border: 3px solid red;
+}
+
+.input-error {
+  color: red;
+}

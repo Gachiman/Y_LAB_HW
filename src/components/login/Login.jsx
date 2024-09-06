@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { mockFetch } from '../../utils/utils.js';
+import { mockFetch } from '../../utils/mockFetch.js';
+import { emailCheck, passwordCheck } from '../..//utils/validationCheck.js'
 import Input from '../Input/Input.jsx';
-
-import './login.css';
+import './Login.css';
 
 
 function Login() {
@@ -13,26 +13,23 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let emailVar = e.target.elements.email.value;
-    let passVar = e.target.elements.password.value;
     let isValid = true;
 
-    let regExpEmailCheck = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-    if (!regExpEmailCheck.test(emailVar)) {
+    if (!emailCheck(email)) {
       setEmailError("Invalid email");
       isValid = false;
     }
-    if (passVar.length < 4) {
-      setPassError("Invalid password (need > 3 characters)");
+    if (!passwordCheck(pass)) {
+      setPassError("Invalid password");
       isValid = false;
     }
     if (!isValid) return;
-    
+
     mockFetch('/login', {
       method: 'POST',
       body: JSON.stringify({
-        email: emailVar,
-        password: passVar,
+        email: email,
+        password: pass,
       }),
     })
       .catch(() => { alert('Something went wrong...')});
@@ -40,33 +37,31 @@ function Login() {
 
     return (
     <div className="auth-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit} noValidate className="auth-form">
+      <h2 className="form-header">Login</h2>
+      <form className="auth-form" onSubmit={handleSubmit} noValidate>
         <Input
-          label="Email" 
+          label="Email:" 
           placeholder="Email@gmail.com" 
           value={email}
           onChange={setEmail} 
           type="email" 
           name="email" 
-          id="email"
           error={emailError} 
           errorReset={setEmailError} 
         />
         
         <Input 
-          label="Password" 
+          label="Password:" 
           placeholder="****" 
           value={pass}
           onChange={setPass} 
           type="password" 
           name="password" 
-          id="password"
           error={passError} 
-          errorReset={setPassError} 
+          errorReset={setPassError}
         />
 
-        <button type="submit">Log In</button>
+        <button className="submit-button" type="submit">Log In</button>
       </form>
     </div>
   );

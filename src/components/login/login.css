@@ -5,30 +5,39 @@
 
 @media screen and (min-width: 600px) {
   .auth-container {
-    padding: 5rem;
-    margin: 0.5rem;
-    border: 1px solid white;
-    border-radius: 10px;
+    padding-inline: 70px;
+    padding-block: 50px;
+    background-color: rgba(50, 13, 99, 0.801);
+    border: 1px solid rgb(185, 216, 235);
+    border-radius: 20px;
   }
 }
 
-label {
-  text-align: left;
-  padding: 0.25rem 0;
+.auth-form {
+  gap: 20px;
 }
 
-input {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border: none;
-  border-radius: 10px;
+.form-header {
+  font-size: 2rem;
+  margin-block: 0px 30px;
 }
 
-button {
-  border: none;
+.submit-button {
+  color: rgb(104, 18, 184);
   background-color: white;
-  padding: 20px;
-  border-radius: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
   cursor: pointer;
-  color:rgb(102, 15, 184);
+  height: 35px;
+}
+
+.submit-button:hover {
+  background-color: rgb(225, 225, 241);
+}
+
+.submit-button:focus {
+  background-color: rgb(225, 225, 241);
+  outline: solid rgb(104, 18, 184);
+  outline-offset: 4px;
 }
